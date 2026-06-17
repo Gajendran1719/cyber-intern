@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Login - WSN Intrusion Detection System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-5 col-md-6 col-sm-8">
+        <div class="card mt-5">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <i class="fas fa-lock" style="font-size: 3rem; color: var(--primary-color);"></i>
+                    <h3 class="card-title mt-3">Login</h3>
+                    <p class="text-muted">WSN Intrusion Detection System</p>
+                </div>
+                
+                <form method="POST" novalidate>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="border: 2px solid #ecf0f1; background: white;">
+                                <i class="fas fa-user" style="color: var(--primary-color);"></i>
+                            </span>
+                            <input type="text" class="form-control" id="username" name="username" 
+                                   placeholder="Enter your username" required autofocus>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text" style="border: 2px solid #ecf0f1; background: white;">
+                                <i class="fas fa-key" style="color: var(--primary-color);"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" name="password" 
+                                   placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
+                        <label class="form-check-label" for="remember_me">
+                            Remember me
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </form>
+                
+                <hr>
+                
+                <p class="text-center text-muted mb-0">
+                    Don't have an account?
+                    <a href="{{ url_for('register') }}" style="color: var(--primary-color); font-weight: 600;">
+                        Register here
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div class="alert alert-info mt-4" role="alert">
+            <i class="fas fa-info-circle"></i>
+                incorrect details
+        </div>
+    </div>
+</div>
+{% endblock %}

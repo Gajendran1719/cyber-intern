@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction - WSN Intrusion Detection System{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-lg-12">
+        <h1 class="section-title">
+            <i class="fas fa-brain"></i> Network Intrusion Detection
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h5 class="mb-0">
+                    <i class="fas fa-database"></i> Enter Network Features
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                {% if prediction %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <h5>
+                            <i class="fas fa-check-circle"></i> Prediction Result
+                        </h5>
+                        <p class="mb-0">
+                            <strong>Attack Type Detected:</strong> 
+                            <span class="badge bg-danger" style="font-size: 1.1rem;">
+                                {{ prediction }}
+                            </span>
+                        </p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <a href="{{ url_for('predict') }}" class="btn btn-primary w-100">
+                                <i class="fas fa-plus-circle"></i> New Prediction
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ url_for('visualization') }}" class="btn btn-secondary w-100">
+                                <i class="fas fa-chart-bar"></i> View Analytics
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <form method="POST" action="{{ url_for('run_prediction') }}" id="predictionForm">
+                    <div class="row">
+                        {% for field_id, field_name in features %}
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ field_id }}" class="form-label">
+                                {{ field_name }}
+                            </label>
+                            <input type="number" 
+                                   class="form-control" 
+                                   id="{{ field_id }}" 
+                                   name="{{ field_id }}" 
+                                   placeholder="Enter {{ field_name }}"
+                                   step="any"
+                                   required>
+                            <small class="text-muted d-block mt-1">
+                                <i class="fas fa-info-circle"></i> Required field
+                            </small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg" onclick="showSpinner()">
+                            <i class="fas fa-magic"></i> Analyze Network & Predict
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="alert alert-info mt-3" role="alert">
+                    <i class="fas fa-lightbulb"></i>
+                    <strong>Tip:</strong> Fill in all the network feature values and click the button above to detect potential intrusions using our trained ML models.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <div class="card-header bg-light p-3">
+                <h5 class="mb-0">
+                    <i class="fas fa-question-circle"></i> Feature Guide
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-2"><strong>What are these features?</strong></p>
+                <p class="text-muted small">
+                    These are network parameters collected from wireless sensor networks including:
+                </p>
+                <ul class="small text-muted">
+                    <li><strong>ID:</strong> Node identifier</li>
+                    <li><strong>Time:</strong> Timestamp of event</li>
+                    <li><strong>Is_CH:</strong> Is Cluster Head</li>
+                    <li><strong>ADV/JOIN/SCH/DATA:</strong> Packet counts</li>
+                    <li><strong>Rank:</strong> Node rank in hierarchy</li>
+                    <li><strong>Energy:</strong> Expanded energy value</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card mb-3">
+            <div class="card-header bg-light p-3">
+                <h5 class="mb-0">
+                    <i class="fas fa-cog"></i> ML Models
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="small text-muted">
+                    <strong>Decision Tree</strong><br>
+                    Fast and interpretable classification model
+                </p>
+                <hr class="my-2">
+                <p class="small text-muted">
+                    <strong>ANN (Artificial Neural Network)</strong><br>
+                    Deep learning model for complex patterns
+                </p>
+                <hr class="my-2">
+                <p class="small text-muted">
+                    <strong>CNN (Convolutional Neural Network)</strong><br>
+                    Specialized for sequential data analysis
+                </p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h5 class="mb-0">
+                    <i class="fas fa-history"></i> Recent Activity
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="small text-muted">
+                    <a href="{{ url_for('history') }}">View your prediction history</a> to track all past analyses.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

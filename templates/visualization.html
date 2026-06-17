@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% block title %}Visualizations - WSN Intrusion Detection System{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-lg-12">
+        <h1 class="section-title">
+            <i class="fas fa-chart-bar"></i> Analytics & Visualizations
+        </h1>
+    </div>
+</div>
+
+<!-- Model Comparison -->
+<div class="row mb-4">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-bar"></i> Algorithm Accuracy Comparison
+                </h5>
+            </div>
+            <div class="card-body text-center p-4">
+                {% if images.accuracy %}
+                    <img src="{{ url_for('static', filename='accuracy.png') }}" 
+                         alt="Accuracy Comparison" class="img-fluid" style="max-width: 100%; border-radius: 10px;">
+                {% else %}
+                    <div class="alert alert-warning" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        Visualization not available. Please run the training script.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confusion Matrices Section -->
+<div class="row mb-4">
+    <div class="col-lg-12 mb-3">
+        <h5 class="text-secondary">
+            <i class="fas fa-layer-group"></i> Confusion Matrices
+        </h5>
+        <p class="text-muted">Detailed performance analysis for each model</p>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <!-- Decision Tree Confusion Matrix -->
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-tree" style="color: #2ecc71;"></i> Decision Tree
+                </h6>
+            </div>
+            <div class="card-body text-center p-4">
+                {% if images.dt_confusion %}
+                    <img src="{{ url_for('static', filename='dt_confusion.png') }}" 
+                         alt="Decision Tree Confusion Matrix" class="img-fluid" style="border-radius: 10px;">
+                {% else %}
+                    <div class="alert alert-warning" role="alert">
+                        <small><i class="fas fa-exclamation-triangle"></i> Visualization not available</small>
+                    </div>
+                {% endif %}
+                <div class="mt-3">
+                    <span class="badge bg-success">Fast</span>
+                    <span class="badge bg-info">Interpretable</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ANN Confusion Matrix -->
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-brain" style="color: #3498db;"></i> ANN (Artificial Neural Network)
+                </h6>
+            </div>
+            <div class="card-body text-center p-4">
+                {% if images.ann_confusion %}
+                    <img src="{{ url_for('static', filename='ann_confusion.png') }}" 
+                         alt="ANN Confusion Matrix" class="img-fluid" style="border-radius: 10px;">
+                {% else %}
+                    <div class="alert alert-warning" role="alert">
+                        <small><i class="fas fa-exclamation-triangle"></i> Visualization not available</small>
+                    </div>
+                {% endif %}
+                <div class="mt-3">
+                    <span class="badge bg-success">Accurate</span>
+                    <span class="badge bg-info">Deep Learning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <!-- CNN Confusion Matrix -->
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-cube" style="color: #e74c3c;"></i> CNN (Convolutional Neural Network)
+                </h6>
+            </div>
+            <div class="card-body text-center p-4">
+                {% if images.cnn_confusion %}
+                    <img src="{{ url_for('static', filename='cnn_confusion.png') }}" 
+                         alt="CNN Confusion Matrix" class="img-fluid" style="border-radius: 10px;">
+                {% else %}
+                    <div class="alert alert-warning" role="alert">
+                        <small><i class="fas fa-exclamation-triangle"></i> Visualization not available</small>
+                    </div>
+                {% endif %}
+                <div class="mt-3">
+                    <span class="badge bg-success">Powerful</span>
+                    <span class="badge bg-info">Sequential Data</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Model Comparison Info -->
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h6 class="mb-0">
+                    <i class="fas fa-trophy"></i> Model Comparison Summary
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Model</th>
+                                <th>Type</th>
+                                <th>Speed</th>
+                                <th>Accuracy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Decision Tree</strong></td>
+                                <td>Classical ML</td>
+                                <td><span class="badge bg-success">Very Fast</span></td>
+                                <td><span class="badge bg-info">Good</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ANN</strong></td>
+                                <td>Deep Learning</td>
+                                <td><span class="badge bg-warning">Medium</span></td>
+                                <td><span class="badge bg-success">Excellent</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>CNN</strong></td>
+                                <td>Deep Learning</td>
+                                <td><span class="badge bg-warning">Medium</span></td>
+                                <td><span class="badge bg-success">Excellent</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="alert alert-info mt-3" role="alert">
+                    <small>
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Note:</strong> All models are continuously trained and evaluated. 
+                        Choose based on your specific use case requirements.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- System Insights -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-light p-3">
+                <h5 class="mb-0">
+                    <i class="fas fa-lightbulb"></i> System Insights
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <h6 class="text-primary">
+                            <i class="fas fa-rocket"></i> Performance
+                        </h6>
+                        <p class="small text-muted">
+                            All models are optimized for production deployment with balanced accuracy and speed.
+                        </p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h6 class="text-info">
+                            <i class="fas fa-database"></i> Data Processing
+                        </h6>
+                        <p class="small text-muted">
+                            Features are normalized and scaled for optimal neural network performance.
+                        </p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h6 class="text-success">
+                            <i class="fas fa-shield-alt"></i> Security
+                        </h6>
+                        <p class="small text-muted">
+                            Advanced ensemble methods ensure reliable intrusion detection across scenarios.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="text-center">
+            <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg">
+                <i class="fas fa-plus-circle"></i> Make a Prediction
+            </a>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-lg">
+                <i class="fas fa-home"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

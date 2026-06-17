@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction History - WSN Intrusion Detection System{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-lg-12">
+        <h1 class="section-title">
+            <i class="fas fa-history"></i> Prediction History
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-light p-3 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-list"></i> All Your Predictions
+                </h5>
+                <span class="badge badge-custom">
+                    Total: {{ predictions.total }}
+                </span>
+            </div>
+            
+            {% if predictions.items %}
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Date & Time</th>
+                                <th>Attack Type</th>
+                                <th>Features Count</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for prediction in predictions.items %}
+                            <tr>
+                                <td>
+                                    <strong>#{{ prediction.id }}</strong>
+                                </td>
+                                <td>
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar"></i>
+                                        {{ prediction.created_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                                    </small>
+                                </td>
+                                <td>
+                                    <span class="badge" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); padding: 8px 12px;">
+                                        {{ prediction.final_prediction }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        {{ prediction.features|length }} features
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-check-circle"></i> Completed
+                                    </span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailsModal{{ prediction.id }}">
+                                        <i class="fas fa-eye"></i> Details
+                                    </button>
+                                </td>
+                            </tr>
+                            
+                            <!-- Details Modal -->
+                            <div class="modal fade" id="detailsModal{{ prediction.id }}" tabindex="-1">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">
+                                                <i class="fas fa-info-circle"></i> Prediction #{{ prediction.id }} Details
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6>Prediction Result</h6>
+                                            <p>
+                                                <strong>Attack Type:</strong> 
+                                                <span class="badge bg-danger">{{ prediction.final_prediction }}</span>
+                                            </p>
+                                            
+                                            <h6 class="mt-3">Timestamp</h6>
+                                            <p>{{ prediction.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                                            
+                                            <h6 class="mt-3">Features (Input Data)</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm">
+                                                    <thead class="table-light">
+                                                        <tr>
+                                                            <th>Feature</th>
+                                                            <th>Value</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for feature_name, feature_value in prediction.features.items()|sort %}
+                                                        <tr>
+                                                            <td><small>{{ feature_name }}</small></td>
+                                                            <td><small><code>{{ feature_value }}</code></small></td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                <i class="fas fa-times"></i> Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            {% if predictions.pages > 1 %}
+            <div class="card-footer bg-light">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination mb-0">
+                        {% if predictions.has_prev %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('history', page=predictions.prev_num) }}">
+                                <i class="fas fa-chevron-left"></i> Previous
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link"><i class="fas fa-chevron-left"></i> Previous</span>
+                        </li>
+                        {% endif %}
+                        
+                        {% for page_num in predictions.iter_pages() %}
+                            {% if page_num %}
+                                {% if page_num == predictions.page %}
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        {{ page_num }}
+                                        <span class="visually-hidden">(current)</span>
+                                    </span>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ url_for('history', page=page_num) }}">
+                                        {{ page_num }}
+                                    </a>
+                                </li>
+                                {% endif %}
+                            {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">...</span>
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if predictions.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('history', page=predictions.next_num) }}">
+                                Next <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">Next <i class="fas fa-chevron-right"></i></span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            {% endif %}
+            
+            {% else %}
+            <div class="card-body">
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>No predictions yet.</strong> 
+                    <a href="{{ url_for('predict') }}">Start making predictions</a> to build your history.
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Action Buttons -->
+<div class="row mt-4">
+    <div class="col-lg-12 text-center">
+        <a href="{{ url_for('predict') }}" class="btn btn-primary">
+            <i class="fas fa-plus-circle"></i> New Prediction
+        </a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+            <i class="fas fa-home"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}
