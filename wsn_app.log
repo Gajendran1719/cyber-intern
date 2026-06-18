@@ -643,3 +643,93 @@
 2026-06-17 15:23:33,928 - __main__ - WARNING - 404 Error: http://172.16.100.207:5000/favicon.ico
 2026-06-17 15:23:33,954 - werkzeug - INFO - 172.16.100.207 - - [17/Jun/2026 15:23:33] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
 >>>>>>> 0b39dce02cb9ab1bd7f3e56bd5ccb724f6ff62f3
+2026-06-18 18:49:55,167 - __main__ - INFO - Loaded dt_model from decision_tree_model.pkl
+2026-06-18 18:49:55,197 - __main__ - INFO - Loaded scaler from scaler.pkl
+2026-06-18 18:49:55,229 - __main__ - INFO - Loaded label_encoder from label_encoder.pkl
+2026-06-18 18:49:55,255 - __main__ - INFO - Database initialized
+2026-06-18 18:49:55,256 - __main__ - INFO - Starting WSN Intrusion Detection System
+2026-06-18 18:49:55,322 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.18.10:5000
+2026-06-18 18:49:55,322 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-18 18:49:58,730 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:49:58] "[32mGET / HTTP/1.1[0m" 302 -
+2026-06-18 18:49:58,893 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:49:58] "GET /login HTTP/1.1" 200 -
+2026-06-18 18:49:59,063 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 18:49:59,165 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:49:59] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 18:50:15,598 - __main__ - INFO - User logged in: tom
+2026-06-18 18:50:15,600 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-06-18 18:50:15,670 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:15] "GET /dashboard HTTP/1.1" 200 -
+2026-06-18 18:50:15,778 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 18:50:15,796 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:15] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 18:50:24,798 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:24] "GET /history HTTP/1.1" 200 -
+2026-06-18 18:50:24,868 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 18:50:24,897 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:24] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 18:50:30,683 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:30] "GET /dashboard HTTP/1.1" 200 -
+2026-06-18 18:50:30,752 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 18:50:30,779 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:30] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 18:50:44,675 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:44] "GET /predict HTTP/1.1" 200 -
+2026-06-18 18:50:44,750 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 18:50:44,771 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:44] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 18:50:51,332 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:51] "GET /visualization HTTP/1.1" 200 -
+2026-06-18 18:50:51,709 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:51] "[36mGET /static/cnn_confusion.png HTTP/1.1[0m" 304 -
+2026-06-18 18:50:51,721 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:51] "[36mGET /static/accuracy.png HTTP/1.1[0m" 304 -
+2026-06-18 18:50:51,723 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:51] "[36mGET /static/dt_confusion.png HTTP/1.1[0m" 304 -
+2026-06-18 18:50:51,733 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:51] "[36mGET /static/ann_confusion.png HTTP/1.1[0m" 304 -
+2026-06-18 18:50:51,751 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 18:50:51,773 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:51] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 18:50:57,774 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:57] "GET /dashboard HTTP/1.1" 200 -
+2026-06-18 18:50:57,820 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 18:50:57,839 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 18:50:57] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:44:36,575 - __main__ - ERROR - Error loading models: No module named 'numpy._core'
+2026-06-18 19:44:36,587 - __main__ - INFO - Database initialized
+2026-06-18 19:44:36,587 - __main__ - INFO - Starting WSN Intrusion Detection System
+2026-06-18 19:44:36,659 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.119.31.178:5000
+2026-06-18 19:44:36,661 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-18 19:44:46,292 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:44:46] "[32mGET / HTTP/1.1[0m" 302 -
+2026-06-18 19:44:46,365 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:44:46] "GET /login HTTP/1.1" 200 -
+2026-06-18 19:44:47,952 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:44:47,983 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:44:47] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:45:05,696 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:05] "[32mGET /login HTTP/1.1[0m" 302 -
+2026-06-18 19:45:05,757 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:05] "GET /dashboard HTTP/1.1" 200 -
+2026-06-18 19:45:05,985 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:45:06,023 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:06] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:45:12,665 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:12] "GET /history?page=1 HTTP/1.1" 200 -
+2026-06-18 19:45:12,726 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:45:12,753 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:12] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:45:17,750 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:17] "GET /dashboard HTTP/1.1" 200 -
+2026-06-18 19:45:17,787 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:45:17,820 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:17] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:45:24,141 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:24] "GET /predict HTTP/1.1" 200 -
+2026-06-18 19:45:24,200 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:45:24,249 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:45:24] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:46:54,464 - __main__ - INFO - User logged out: tom
+2026-06-18 19:46:54,466 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:46:54] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-06-18 19:46:54,474 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:46:54] "GET /login HTTP/1.1" 200 -
+2026-06-18 19:46:54,524 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:46:54,550 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:46:54] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:47:05,933 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:47:05] "GET /login HTTP/1.1" 200 -
+2026-06-18 19:47:05,983 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:47:05,999 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:47:05] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:47:30,442 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:47:30] "GET /register HTTP/1.1" 200 -
+2026-06-18 19:47:30,496 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:47:30,523 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:47:30] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:48:00,329 - __main__ - INFO - New user registered: dinesh
+2026-06-18 19:48:00,337 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:00] "[32mPOST /register HTTP/1.1[0m" 302 -
+2026-06-18 19:48:00,345 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:00] "GET /login HTTP/1.1" 200 -
+2026-06-18 19:48:00,450 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:48:00,490 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:00] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:48:10,820 - __main__ - INFO - User logged in: dinesh
+2026-06-18 19:48:10,820 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:10] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-06-18 19:48:10,851 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:10] "GET /dashboard HTTP/1.1" 200 -
+2026-06-18 19:48:10,957 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:48:10,999 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:10] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:48:20,367 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:20] "GET /predict HTTP/1.1" 200 -
+2026-06-18 19:48:20,417 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:48:20,442 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:20] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2026-06-18 19:48:22,728 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:22] "GET /history HTTP/1.1" 200 -
+2026-06-18 19:48:22,801 - __main__ - WARNING - 404 Error: http://127.0.0.1:5000/favicon.ico
+2026-06-18 19:48:22,820 - werkzeug - INFO - 127.0.0.1 - - [18/Jun/2026 19:48:22] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
