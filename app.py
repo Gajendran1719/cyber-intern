@@ -38,14 +38,15 @@ login_manager.login_view = 'login'
 login_manager.login_message = 'Please log in to access this page.'
 
 # Setup logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('wsn_app.log'),
-        logging.StreamHandler()
-    ]
-)
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+#     handlers=[
+#         logging.FileHandler('wsn_app.log'),
+#         logging.StreamHandler()
+#     ]
+# )
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Create upload folder
