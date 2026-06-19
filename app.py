@@ -18,14 +18,27 @@ from functools import wraps
 # Configuration
 class Config:
     """Application configuration"""
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///wsn_detection.db'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
-    UPLOAD_FOLDER = 'uploads'
-    MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
-    SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
-    SESSION_COOKIE_HTTPONLY = True
-    SESSION_COOKIE_SAMESITE = 'Lax'
+    #SQLALCHEMY_DATABASE_URI = 'sqlite:///wsn_detection.db'
+    #SQLALCHEMY_TRACK_MODIFICATIONS = False
+    #SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+    #UPLOAD_FOLDER = 'uploads'
+    #MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
+    #SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+    #SESSION_COOKIE_HTTPONLY = True
+    #SESSION_COOKIE_SAMESITE = 'Lax'
+    
+
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:gajendran24uca229@db.qvgmszwktfzcvoldtekt.supabase.co:5432/postgres"
+)
+
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+#create the tables
+with app.app_context():
+    db.create_all()
+    
 
 # Initialize Flask app
 app = Flask(__name__)
